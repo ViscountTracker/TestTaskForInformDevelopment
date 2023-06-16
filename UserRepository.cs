@@ -4,9 +4,9 @@ using TestTaskForInformDevelopment.Interfaces;
 
 public class UserRepository : IUserRepository
 {
-    private readonly YourDbContext _dbContext;//TODO: AddYourDbContext and conection with DB replace name "YourDbContext"
+    private readonly InformDevDB _dbContext;
 
-    public UserRepository(YourDbContext dbContext)
+    public UserRepository(InformDevDB dbContext)
     {
         _dbContext = dbContext;
     }

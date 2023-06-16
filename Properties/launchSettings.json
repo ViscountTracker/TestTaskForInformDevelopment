@@ -23,6 +23,13 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "profiles": {
+      "IIS Express": {
+        "commandName": "IISExpress",
+        "launchBrowser": true,
+        "environmentVariables": {
+          "ConnectionStrings__YourConnectionString": "Server=<DESKTOP-VHS34O0\\User>;Database=<(localdb)\\MSSQLLocalDB>;User Id=<default>;"
+        }
+      }
     }
-  }
-}

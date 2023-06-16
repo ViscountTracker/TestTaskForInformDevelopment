@@ -4,9 +4,9 @@ using TestTaskForInformDevelopment.Interfaces;
 
 public class PropertyRepository : IPropertyRepository
 {
-    private readonly YourDbContext _dbContext;//TODO: AddYourDbContext and conection with DB replace name "YourDbContext"
+    private readonly InformDevDB _dbContext;//TODO: AddYourDbContext and conection with DB replace name "YourDbContext"
 
-    public PropertyRepository(YourDbContext dbContext) 
+    public PropertyRepository(InformDevDB dbContext) 
     {
         _dbContext = dbContext;// ?? throw new ArgumentNullException(nameof(dbContext)); /*TODO: I need knew add this */
     }

@@ -11,4 +11,5 @@ namespace TestTaskForInformDevelopment.Data
         public decimal InitialPropertyValue { get; set; }
         public decimal CurrentPropertyValue { get; set;}
     }
+ 
 }

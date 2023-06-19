@@ -1,14 +1,13 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using TestTaskForInformDevelopment.Data;
-using Microsoft.EntityFrameworkCore.SqlServer;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
-[DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
-internal class Program
+internal class Program : Property
 {
+    public int DepreciationPerPeriod { get; private set; }
+    public int PeriodDays { get; private set; }
+    public DateTime PurchaseDateTime { get; private set; }
+
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -25,9 +24,6 @@ internal class Program
         {
             app.UseExceptionHandler("/Error");
         }
-
-       //app.CalculateCurrentValue(); // TODO: 
-
         app.UseStaticFiles();
 
         app.UseRouting();
@@ -60,5 +56,20 @@ internal class Program
     {
         services.AddDbContext<InformDevDB>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("\"Server=<DESKTOP-VHS34O0\\\\User>;Database=<(localdb)\\\\MSSQLLocalDB>;User Id=<default>;\"")));
+    }
+    public double GetCurrentValue()
+    {
+        var daysOwned = DateTime.Now - PurchaseDate;
+
+        int periodCount = 0;
+        int periodDays = PriceDepreciationPeriod;
+        double totalDays = daysOwned.TotalDays;
+
+        if (periodDays > 0)
+        {
+            periodCount = (int)(totalDays / periodDays);
+        }
+
+        return InitialValue - (PriceDepreciation * periodCount);
     }
 }

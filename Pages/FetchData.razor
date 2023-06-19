@@ -1,48 +1,24 @@
-﻿@page "/fetchdata"
+﻿@page "/fetch-data"
+@inject HttpClient Http
 
-<PageTitle>Weather forecast</PageTitle>
+<h1>Дані з сервера</h1>
 
-@using TestTaskForInformDevelopment.Data
-@inject WeatherForecastService ForecastService
 
-<h1>Weather forecast</h1>
-
-<p>This component demonstrates fetching data from a service.</p>
-
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
 
 @code {
-    private WeatherForecast[]? forecasts;
 
-    protected override async Task OnInitializedAsync()
+    public class User
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
     }
+
+    
+    private List<User> Users = new List<User>
+        {
+            new User { Name = "John Doe", Email = "johndoe@example.com", Address = "123 Main St", Phone = "555-1234" },
+           
+        };
 }

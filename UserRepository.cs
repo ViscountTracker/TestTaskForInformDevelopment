@@ -2,7 +2,7 @@
 using TestTaskForInformDevelopment.Data;
 using TestTaskForInformDevelopment.Interfaces;
 
-public class UserRepository : IUserRepository
+public class UserRepository : IUserRepository 
 {
     private readonly InformDevDB _dbContext;
 

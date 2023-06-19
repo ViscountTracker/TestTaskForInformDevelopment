@@ -8,7 +8,6 @@ Phone NVARCHAR(20) NOT NULL,
 InitialPropertyValue DECIMAL(18,2) NOT NULL,
 CurrentPropertyValue DECIMAL(18,2) NOT NULL
 );
-
 /*Broken tables Properties*/
 CREATE TABLE Properties(
 Id INT PRIMARY KEY IDENTITY,
